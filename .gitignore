@@ -3,6 +3,9 @@ bin/
 obj/
 out/
 
+# mssql data folder
+./mssql/
+
 # User-specific files
 *.user
 *.suo

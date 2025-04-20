@@ -1,15 +1,21 @@
-﻿services:
+﻿﻿services:
   refactoringchallenge:
     image: refactoringchallenge
     build:
       context: .
-      dockerfile: RefactoringChallenge/Dockerfile
+      dockerfile: ./Dockerfile
+    environment:
+      - DOTNET_ENVIRONMENT=Production
 
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql
     ports:
       - "1433:1433"
+    volumes:
+      - ./mssql/backups:/var/opt/mssql/backups
+      - ./mssql/data:/var/opt/mssql/data
+      - ./mssql/log:/var/opt/mssql/log
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "RCPassword1!"

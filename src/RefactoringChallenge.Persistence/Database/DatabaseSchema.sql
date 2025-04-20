@@ -20,7 +20,8 @@ CREATE TABLE Products (
 );
 
 CREATE TABLE Inventory (
-    ProductId INT PRIMARY KEY,
+    Id INT PRIMARY KEY,
+    ProductId INT NOT NULL,
     StockQuantity INT NOT NULL,
     FOREIGN KEY (ProductId) REFERENCES Products(Id)
 );
@@ -32,7 +33,7 @@ CREATE TABLE Orders (
     TotalAmount DECIMAL(18, 2) NOT NULL,
     DiscountPercent DECIMAL(5, 2) NULL,
     DiscountAmount DECIMAL(18, 2) NULL,
-    Status NVARCHAR(20) NOT NULL,
+    Status INT NOT NULL,
     FOREIGN KEY (CustomerId) REFERENCES Customers(Id)
 );
 
